@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FO76 STASH OPTIMIZER v4-SCIP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;900&display=swap');
+
+        :root {
+            --g: #39ff14;
+            --a: #ffb300;
+            --r: #ff4444;
+            --c: #00e5ff;
+            --m: #ff6ec7;
+            --bg0: #080c07;
+            --bg1: #0f1510;
+            --bg2: #131b11;
+            --bg3: #0d1409;
+            --bd: #1a2e16;
+            --bdg: #254e1f;
+            --t0: #3d5c37;
+            --t1: #7db875;
+            --t2: #c0edb8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: var(--bg0);
+            color: var(--t1);
+            font-family: 'Exo 2', sans-serif;
+            font-size: 16px;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, rgba(0, 255, 0, .012) 0px, transparent 1px, transparent 3px);
+            pointer-events: none;
+            z-index: 1000
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .75) 100%);
+            pointer-events: none;
+            z-index: 999
+        }
+
+        .wrap {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 16px
+        }
+
+        /* -- HEADER -- */
+        header {
+            border: 1px solid var(--bdg);
+            background: var(--bg1);
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--g), transparent);
+            animation: scanh 5s linear infinite
+        }
+
+        @keyframes scanh {
+            0% {
+                transform: translateX(-100%)
+            }
+
+            100% {
+                transform: translateX(100%)
+            }
+        }
+
+        .hrow {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--g);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 8px;
+            color: var(--g);
+            text-align: center;
+            line-height: 1.3;
+            box-shadow: 0 0 14px var(--g), inset 0 0 8px rgba(57, 255, 20, .12);
+            animation: pulse 2.5s ease-in-out infinite;
+            flex-shrink: 0
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 14px var(--g), inset 0 0 8px rgba(57, 255, 20, .12)
+            }
+
+            50% {
+                box-shadow: 0 0 26px var(--g), inset 0 0 18px rgba(57, 255, 20, .22)
+            }
+        }
+
+        .htitle h1 {
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--g);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 18px rgba(57, 255, 20, .45)
+        }
+
+        .htitle p {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px;
+            color: var(--t0);
+            letter-spacing: 1px;
+            margin-top: 3px
+        }
+
+        .badges {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-top: 8px
+        }
+
+        .badge {
+            border: 1px solid;
+            padding: 2px 9px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-transform: uppercase
+        }
+
+        .bg {
+            border-color: var(--g);
+            color: var(--g);
+            background: rgba(57, 255, 20, .06)
+        }
+
+        .ba {
+            border-color: var(--a);
+            color: var(--a);
+            background: rgba(255, 179, 0, .06)
+        }
+
+        .bc {
+            border-color: var(--c);
+            color: var(--c);
+            background: rgba(0, 229, 255, .06)
+        }
+
+        .bm {
+            border-color: var(--m);
+            color: var(--m);
+            background: rgba(255, 110, 199, .06)
+        }
+
+        /* -- STATS -- */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin-bottom: 12px
+        }
+
+        .sc {
+            background: var(--bg2);
+            border: 1px solid var(--bd);
+            padding: 10px 12px;
+            transition: border-color .2s
+        }
+
+        .sc:hover {
+            border-color: var(--bdg)
+        }
+
+        .sl {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: var(--t0);
+            text-transform: uppercase;
+            margin-bottom: 3px
+        }
+
+        .sv {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 21px;
+            color: var(--g);
+            text-shadow: 0 0 8px rgba(57, 255, 20, .28)
+        }
+
+        .su {
+            font-size: 10px;
+            color: var(--t0)
+        }
+
+        /* -- CAP BAR -- */
+        .cap {
+            background: var(--bg1);
+            border: 1px solid var(--bd);
+            padding: 12px 16px;
+            margin-bottom: 12px
+        }
+
+        .cap-lbl {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 16px
+        }
+
+        .cap-outer {
+            height: 12px;
+            background: #080e06;
+            border: 1px solid var(--bd);
+            overflow: hidden;
+            position: relative
+        }
+
+        .cap-inner {
+            height: 100%;
+            background: linear-gradient(90deg, #174012, var(--g));
+            animation: bglow 2.5s ease-in-out infinite;
+            transition: width 1.2s ease
+        }
+
+        @keyframes bglow {
+
+            0%,
+            100% {
+                filter: brightness(1)
+            }
+
+            50% {
+                filter: brightness(1.35) drop-shadow(0 0 5px var(--g))
+            }
+        }
+
+        .cap-inner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, transparent 0, transparent 16px, rgba(0, 0, 0, .2) 16px, rgba(0, 0, 0, .2) 18px)
+        }
+
+        .cap-segs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 7px
+        }
+
+        .cseg {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px
+        }
+
+        .cdot {
+            width: 8px;
+            height: 8px;
+            border-radius: 1px;
+            flex-shrink: 0
+        }
+
+        /* -- DONUT -- */
+        .donut-sec {
+            background: var(--bg1);
+            border: 1px solid var(--bd);
+            padding: 12px 14px;
+            margin-bottom: 12px
+        }
+
+        .dsec-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--t0);
+            text-transform: uppercase;
+            margin-bottom: 9px
+        }
+
+        .dgrid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: flex-start
+        }
+
+        .dleg {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-width: 150px
+        }
+
+        .drow {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px
+        }
+
+        .dcol {
+            width: 9px;
+            height: 9px;
+            border-radius: 1px;
+            flex-shrink: 0
+        }
+
+        .dnm {
+            color: var(--t1);
+            flex: 1
+        }
+
+        .dpct {
+            color: var(--t0);
+            width: 32px;
+            text-align: right
+        }
+
+        .dw {
+            color: var(--g);
+            width: 46px;
+            text-align: right
+        }
+
+        /* -- CONTROLS -- */
+        .ctrls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            align-items: center
+        }
+
+        .cl {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 9px;
+            color: var(--t0);
+            letter-spacing: 1px;
+            text-transform: uppercase
+        }
+
+        .fb {
+            background: var(--bg2);
+            border: 1px solid var(--bd);
+            color: var(--t0);
+            padding: 4px 10px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all .15s
+        }
+
+        .fb:hover,
+        .fb.active {
+            border-color: var(--g);
+            color: var(--g);
+            background: rgba(57, 255, 20, .07);
+            box-shadow: 0 0 8px rgba(57, 255, 20, .12)
+        }
+
+        .sb {
+            background: var(--bg2);
+            border: 1px solid var(--bd);
+            color: var(--t2);
+            padding: 4px 10px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            outline: none;
+            min-width: 160px;
+            transition: border-color .2s
+        }
+
+        .sb:focus {
+            border-color: var(--g)
+        }
+
+        .sb::placeholder {
+            color: var(--t0)
+        }
+
+        /* -- TABLE -- */
+        .tbl-wrap {
+            background: var(--bg1);
+            border: 1px solid var(--bd);
+            overflow-x: auto;
+            margin-bottom: 12px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Share Tech Mono', monospace
+        }
+
+        thead th {
+            background: var(--bg3);
+            color: var(--t0);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 8px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--bdg);
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none
+        }
+
+        thead th:hover {
+            color: var(--g)
+        }
+
+        thead th.sorted {
+            color: var(--g)
+        }
+
+        .cat-row {
+            background: #0b1509;
+            border-top: 1px solid var(--bdg);
+            border-bottom: 1px solid var(--bd)
+        }
+
+        .cat-row td {
+            padding: 6px 8px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            white-space: nowrap
+        }
+
+        tbody tr.ir {
+            border-bottom: 1px solid rgba(26, 46, 22, .5);
+            transition: background .1s;
+            cursor: default
+        }
+
+        tbody tr.ir:hover {
+            background: rgba(57, 255, 20, .035)
+        }
+
+        tbody tr.ir.ess {
+            background: rgba(57, 255, 20, .02)
+        }
+
+        td {
+            padding: 6px 8px;
+            font-size: 14px;
+            color: var(--t1);
+            white-space: nowrap;
+            vertical-align: middle
+        }
+
+        .cn {
+            font-size: 16px;
+            color: var(--t2)
+        }
+
+        .es {
+            display: inline-block;
+            color: var(--g);
+            margin-right: 3px;
+            font-size: 12px;
+            text-shadow: 0 0 6px var(--g)
+        }
+
+        /* qty bar */
+        .qcell {
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .qbar {
+            width: 48px;
+            height: 4px;
+            background: #0c1509;
+            border: 1px solid var(--bd);
+            flex-shrink: 0
+        }
+
+        .qfill {
+            height: 100%;
+            background: var(--g)
+        }
+
+        .qnum {
+            font-size: 14px;
+            color: var(--g);
+            min-width: 36px;
+            text-align: right
+        }
+
+        /* delta */
+        .dp {
+            color: var(--c)
+        }
+
+        .dn {
+            color: var(--r)
+        }
+
+        .dz {
+            color: var(--t0)
+        }
+
+        /* deviation badges */
+        .dev {
+            display: inline-block;
+            padding: 1px 4px;
+            font-size: 11px;
+            border-radius: 2px;
+            min-width: 20px;
+            text-align: center
+        }
+
+        .dev-pos {
+            background: rgba(0, 229, 255, .15);
+            color: var(--c);
+            border: 1px solid var(--c)
+        }
+
+        .dev-neg {
+            background: rgba(255, 68, 68, .15);
+            color: var(--r);
+            border: 1px solid var(--r)
+        }
+
+        .dev-zero {
+            color: var(--t0)
+        }
+
+        /* importance */
+        .ibar {
+            width: 40px;
+            height: 3px;
+            background: #0c1509;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 3px
+        }
+
+        .ifill {
+            height: 100%
+        }
+
+        /* type count badge */
+        .tc {
+            display: inline-block;
+            border: 1px solid var(--bd);
+            padding: 1px 4px;
+            font-size: 12px;
+            color: var(--t0);
+            min-width: 20px;
+            text-align: center
+        }
+
+        /* range display */
+        .range {
+            color: var(--t0);
+            font-size: 11px
+        }
+
+        /* -- SUMMARY -- */
+        .summ {
+            background: var(--bg1);
+            border: 1px solid var(--bd);
+            padding: 12px 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 10px
+        }
+
+        .sb-blk h3 {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--t0);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            border-bottom: 1px solid var(--bd);
+            padding-bottom: 3px
+        }
+
+        .srow {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px
+        }
+
+        .sk {
+            color: var(--t0)
+        }
+
+        .sv2 {
+            color: var(--t2)
+        }
+
+        /* -- LEGEND -- */
+        .leg {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: var(--t0);
+            text-transform: uppercase;
+            padding: 7px 12px;
+            border: 1px solid var(--bd);
+            background: var(--bg1)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <div class="hrow">
+                <div class="logo">PIP<br>BOY<br>3000</div>
+                <div class="htitle">
+                    <h1>STASH OPTIMIZER v4-SCIP</h1>
+                    <p>CASCADE IDEAL · LOGARITHMIC ELASTICITY · ZERO-SUM STEAL · MIQCP</p>
+                    <div class="badges">
+                        <span class="badge bg">SCIP QUADRATIC</span>
+                        <span class="badge ba">CATEGORY ELASTICITY</span>
+                        <span class="badge bc">CASCADE IDEAL</span>
+                        <span class="badge bm">FAIR STEAL</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="stats" id="statsBar"></div>
+
+        <div class="cap" id="capBar"></div>
+
+        <div class="donut-sec">
+            <div class="dsec-title">CATEGORY WEIGHT DISTRIBUTION</div>
+            <div class="dgrid">
+                <svg id="donutSvg" width="110" height="110" viewBox="0 0 110 110" style="flex-shrink:0"></svg>
+                <div class="dleg" id="donutLeg"></div>
+            </div>
+        </div>
+
+        <div class="ctrls">
+            <span class="cl">FILTER:</span>
+            <button class="fb active" data-f="all">ALL</button>
+            <button class="fb" data-f="essential">★ ESSENTIAL</button>
+            <button class="fb" data-f="devpos">d+ SURPLUS</button>
+            <button class="fb" data-f="devneg">d− DEFICIT</button>
+            <span class="cl" style="margin-left:8px">SEARCH:</span>
+            <input class="sb" id="srch" type="text" placeholder="item name...">
+            <span class="cl" style="margin-left:8px">SORT:</span>
+            <button class="fb" data-s="tw">WEIGHT ↕</button>
+            <button class="fb" data-s="imp">IMP ↕</button>
+            <button class="fb" data-s="db">Δ IDEAL ↕</button>
+            <button class="fb" data-s="steal">STEAL ↕</button>
+        </div>
+
+        <div class="tbl-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ITEM</th>
+                        <th title="type_count: distinct sub-types grouped">TC</th>
+                        <th title="units stored per sub-type">QTY/TC</th>
+                        <th title="total quantity = TC × QTY/TC">TOTAL QTY</th>
+                        <th title="cascade-ideal (continuous) quantity">IDEAL</th>
+                        <th title="optimal - ideal (rounded baseline)">Δ IDEAL</th>
+                        <th>RANGE</th>
+                        <th title="preferred minimum (soft lower bound)">PMIN</th>
+                        <th title="preferred maximum (soft upper bound)">PMAX</th>
+                        <th title="positive deviation (above pref_max)">d+</th>
+                        <th title="negative deviation (below pref_min)">d−</th>
+                        <th>UNIT W</th>
+                        <th>TOTAL W</th>
+                        <th title="steal_factor: aggressiveness in taking from others">STEAL</th>
+                        <th>IMP</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+
+        <div class="summ" id="summ"></div>
+
+        <div class="leg">
+            <div><span style="color:var(--g)">★</span> ESSENTIAL (hard floor protected)</div>
+            <div><span style="color:var(--c)">d+</span> SURPLUS (above pref_max)</div>
+            <div><span style="color:var(--r)">d−</span> DEFICIT (below pref_min)</div>
+            <div>IDEAL = cascade-ideal (continuous)</div>
+            <div>PMIN/PMAX = SOFT BOUNDS</div>
+            <div>Δ IDEAL = optimal − baseline</div>
+            <div>STEAL = aggressiveness [0–1]</div>
+            <div><span style="color:var(--c)">IDEAL coloured</span> = above ideal</div>
+            <div><span style="color:var(--a)">IDEAL coloured</span> = below ideal</div>
+        </div>
+
+    </div>
+
+
+    <script type="module">
+        // Load Data
+        const response = await fetch('../data/optimization_result.json');
+        const D = await response.json();
+
+        const COLORS = ['#39ff14', '#ffb300', '#00e5ff', '#ff6ec7', '#a78bfa', '#fb923c', '#34d399', '#f87171', '#60a5fa', '#fbbf24'];
+        let sortKey = null, sortAsc = true;
+
+        (function init() {
+            const m = D.meta;
+            const all = D.categories.flatMap(c => c.items);
+
+            // stats
+            const stats = [
+                { l: 'Stash Cap', v: m.stash_capacity, u: 'lbs' },
+                { l: 'Buffer', v: m.buffer, u: 'lbs' },
+                { l: 'Usable', v: m.usable_capacity, u: 'lbs' },
+                { l: 'Used', v: m.total_weight_used.toFixed(1), u: 'lbs' },
+                { l: 'Free', v: m.total_weight_free.toFixed(1), u: 'lbs' },
+                { l: 'Utilization', v: m.utilization_pct + '%', u: '' },
+                { l: 'At Baseline', v: all.filter(i => i.delta_from_baseline === 0).length, u: 'items' },
+                { l: 'd+ Surplus', v: all.filter(i => i.deviation_positive > 0).length, u: 'items' },
+                { l: 'd− Deficit', v: all.filter(i => i.deviation_negative > 0).length, u: 'items' },
+            ];
+            document.getElementById('statsBar').innerHTML = stats.map(s => `<div class="sc"><div class="sl">${s.l}</div><div class="sv">${s.v}<span class="su"> ${s.u}</span></div></div>`).join('');
+
+            // cap bar
+            const pct = m.utilization_pct;
+            const segs = D.categories.map((c, i) => `<div class="cseg"><div class="cdot" style="background:${COLORS[i % COLORS.length]}"></div><span style="color:${COLORS[i % COLORS.length]}">${c.category}</span><span style="color:var(--t0)">${(c.allocated_weight / m.usable_capacity * 100).toFixed(1)}%</span></div>`).join('');
+            document.getElementById('capBar').innerHTML = `
+    <div class="cap-lbl"><span style="color:var(--g)">STASH CAPACITY</span><span style="color:var(--a)">${m.total_weight_used.toFixed(2)} / ${m.usable_capacity}  (${pct}%)</span></div>
+    <div class="cap-outer"><div class="cap-inner" style="width:${pct}%"></div></div>
+    <div class="cap-segs">${segs}</div>`;
+
+            buildDonut();
+            buildTable('all', '');
+            buildSummary();
+
+            // filter buttons
+            document.querySelectorAll('.fb[data-f]').forEach(b => {
+                b.addEventListener('click', () => {
+                    document.querySelectorAll('.fb[data-f]').forEach(x => x.classList.remove('active'));
+                    b.classList.add('active');
+                    buildTable(b.dataset.f, document.getElementById('srch').value);
+                });
+            });
+            document.getElementById('srch').addEventListener('input', e => {
+                const af = document.querySelector('.fb[data-f].active')?.dataset.f || 'all';
+                buildTable(af, e.target.value);
+            });
+            // sort buttons
+            document.querySelectorAll('.fb[data-s]').forEach(b => {
+                b.addEventListener('click', () => {
+                    const k = b.dataset.s;
+                    if (sortKey === k) sortAsc = !sortAsc; else { sortKey = k; sortAsc = false; }
+                    document.querySelectorAll('.fb[data-s]').forEach(x => x.classList.remove('active'));
+                    b.classList.add('active');
+                    const af = document.querySelector('.fb[data-f].active')?.dataset.f || 'all';
+                    buildTable(af, document.getElementById('srch').value);
+                });
+            });
+        })();
+
+        function buildDonut() {
+            const svg = document.getElementById('donutSvg');
+            const leg = document.getElementById('donutLeg');
+            const cx = 55, cy = 55, r = 40, ir = 24;
+            const total = D.meta.total_weight_used;
+            let angle = -Math.PI / 2;
+            const slices = D.categories.filter(c => c.allocated_weight > 0).map((c, i) => {
+                const frac = c.allocated_weight / total;
+                const sa = angle, ea = angle + frac * 2 * Math.PI;
+                angle = ea;
+                return { c, frac, sa, ea, col: COLORS[D.categories.indexOf(c) % COLORS.length] };
+            });
+            svg.innerHTML = slices.map(s => {
+                const x1 = cx + r * Math.cos(s.sa), y1 = cy + r * Math.sin(s.sa);
+                const x2 = cx + r * Math.cos(s.ea), y2 = cy + r * Math.sin(s.ea);
+                const ix1 = cx + ir * Math.cos(s.sa), iy1 = cy + ir * Math.sin(s.sa);
+                const ix2 = cx + ir * Math.cos(s.ea), iy2 = cy + ir * Math.sin(s.ea);
+                const lg = (s.ea - s.sa) > Math.PI ? 1 : 0;
+                return `<path d="M${x1},${y1} A${r},${r} 0 ${lg},1 ${x2},${y2} L${ix2},${iy2} A${ir},${ir} 0 ${lg},0 ${ix1},${iy1} Z" fill="${s.col}" opacity=".82" stroke="var(--bg0)" stroke-width="1"><title>${s.c.category}: ${s.c.allocated_weight.toFixed(1)}w (${(s.frac * 100).toFixed(1)}%)</title></path>`;
+            }).join('') + `<text x="${cx}" y="${cy + 1}" text-anchor="middle" dominant-baseline="middle" font-family="Share Tech Mono" font-size="9" fill="var(--t0)">STASH</text>`;
+            leg.innerHTML = slices.map(s => `<div class="drow"><div class="dcol" style="background:${s.col}"></div><span class="dnm">${s.c.category}</span><span class="dpct">${(s.frac * 100).toFixed(1)}%</span><span class="dw">${s.c.allocated_weight.toFixed(1)}w</span></div>`).join('');
+        }
+
+        function buildTable(filter, search) {
+            const tbody = document.getElementById('tbody');
+            const rows = [];
+
+            let items_flat = [];
+            D.categories.forEach((cat, ci) => {
+                cat.items.forEach(item => { item._cat = cat; item._ci = ci; items_flat.push(item); });
+            });
+
+            // sort if needed
+            if (sortKey === 'tw') items_flat.sort((a, b) => sortAsc ? a.total_weight - b.total_weight : b.total_weight - a.total_weight);
+            else if (sortKey === 'imp') items_flat.sort((a, b) => sortAsc ? a.composite_importance - b.composite_importance : b.composite_importance - a.composite_importance);
+            else if (sortKey === 'db') items_flat.sort((a, b) => sortAsc ? a.delta_from_baseline - b.delta_from_baseline : b.delta_from_baseline - a.delta_from_baseline);
+            else if (sortKey === 'steal') items_flat.sort((a, b) => sortAsc ? a.steal_factor - b.steal_factor : b.steal_factor - a.steal_factor);
+
+            // group back by category in order
+            const grouped = new Map();
+            const catOrder = [];
+            items_flat.forEach(item => {
+                const k = item._cat.category;
+                if (!grouped.has(k)) { grouped.set(k, { cat: item._cat, ci: item._ci, items: [] }); catOrder.push(k); }
+                grouped.get(k).items.push(item);
+            });
+
+            catOrder.forEach(k => {
+                const { cat, ci, items } = grouped.get(k);
+                const col = COLORS[ci % COLORS.length];
+                let filtered = items;
+                if (filter === 'essential') filtered = filtered.filter(i => i.is_essential);
+                if (filter === 'devpos') filtered = filtered.filter(i => i.deviation_positive > 0);
+                if (filter === 'devneg') filtered = filtered.filter(i => i.deviation_negative > 0);
+                if (search) filtered = filtered.filter(i => i.name.toLowerCase().includes(search.toLowerCase()));
+                if (!filtered.length) return;
+
+                const fillPct = cat.allocation_fill_pct != null ? cat.allocation_fill_pct.toFixed(1) : '—';
+                const target = cat.allocation_target != null ? cat.allocation_target.toFixed(1) : '—';
+                const fillCol = cat.allocation_fill_pct >= 95 ? 'var(--g)' :
+                    cat.allocation_fill_pct >= 70 ? 'var(--a)' : 'var(--r)';
+
+                rows.push(`<tr class="cat-row"><td colspan="16">
+                    <span style="color:${col}">${cat.category}</span>
+                    <span style="color:var(--t0);font-size:12px">
+                    &nbsp;— IMP=${cat.importance.toFixed(2)}
+                    &nbsp; alloc=${(cat.allocation_ratio * 100).toFixed(0)}%
+                    &nbsp; target=${target}w
+                    &nbsp; used=<span style="color:${fillCol}">${cat.allocated_weight.toFixed(2)}w</span>
+                    &nbsp; fill=<span style="color:${fillCol}">${fillPct}%</span>
+                    </span></td></tr>`);
+
+                filtered.forEach(item => {
+                    const ideal = item.ideal_quantity != null ? item.ideal_quantity : item.baseline_quantity;
+                    const pmax = item.preferred_max || ideal || 1;
+                    const qPct = pmax > 0 ? Math.min(100, (item.optimal_quantity / pmax) * 100) : 0;
+
+                    const d = item.delta_from_baseline;
+                    const ds = d > 0 ? `<span class="dp">+${d}</span>` : d < 0 ? `<span class="dn">${d}</span>` : `<span class="dz">±0</span>`;
+
+                    const dev_pos_html = item.deviation_positive > 0 ? `<span class="dev dev-pos">+${item.deviation_positive}</span>` : `<span class="dev-zero">−</span>`;
+                    const dev_neg_html = item.deviation_negative > 0 ? `<span class="dev dev-neg">−${item.deviation_negative}</span>` : `<span class="dev-zero">−</span>`;
+
+                    const impColor = item.composite_importance >= 0.8 ? 'var(--g)' : item.composite_importance >= 0.6 ? 'var(--a)' : 'var(--t0)';
+
+                    // steal factor pill color
+                    const sf = item.steal_factor || 0;
+                    const sfCol = sf >= 0.75 ? 'var(--r)' : sf >= 0.4 ? 'var(--a)' : 'var(--t0)';
+
+                    // ideal deviation indicator
+                    const idealDiff = item.optimal_quantity - ideal;
+                    const idealStr = Math.abs(idealDiff) < 0.5 ? `<span style="color:var(--t0)">${ideal.toFixed(1)}</span>`
+                        : idealDiff > 0 ? `<span style="color:var(--c)">${ideal.toFixed(1)}</span>`
+                            : `<span style="color:var(--a)">${ideal.toFixed(1)}</span>`;
+
+                    rows.push(`<tr class="ir ${item.is_essential ? 'ess' : ''}">
+                        <td class="cn">${item.is_essential ? '<span class="es">★</span>' : ''}${item.name}</td>
+                        <td><span class="tc">×${item.type_count}</span></td>
+                        <td style="color:var(--c)">${item.qty_per_type}</td>
+                        <td><div class="qcell"><div class="qbar"><div class="qfill" style="width:${qPct}%"></div></div><span class="qnum">${item.optimal_quantity}</span></div></td>
+                        <td>${idealStr}</td>
+                        <td>${ds}</td>
+                        <td class="range">[${item.min_total}..${item.max_total}]</td>
+                        <td style="color:var(--t0);font-size:11px">${item.preferred_min}</td>
+                        <td style="color:var(--t0);font-size:11px">${item.preferred_max}</td>
+                        <td>${dev_pos_html}</td>
+                        <td>${dev_neg_html}</td>
+                        <td style="color:var(--t0);font-size:12px">${item.effective_weight.toFixed(3)}</td>
+                        <td style="color:var(--t1)">${item.total_weight.toFixed(2)}</td>
+                        <td><span style="color:${sfCol};font-size:12px">${sf.toFixed(2)}</span></td>
+                        <td><div class="ibar"><div class="ifill" style="width:${item.composite_importance * 100}%;background:${impColor}"></div></div><span style="font-size:11px;color:${impColor}">${item.composite_importance.toFixed(2)}</span></td>
+                        <td></td>
+                    </tr>`);
+                });
+            });
+
+            tbody.innerHTML = rows.join('');
+        }
+
+        function buildSummary() {
+            const m = D.meta;
+            const all = D.categories.flatMap(c => c.items);
+
+            const catRows = D.categories.map(c => {
+                const fillPct = c.allocation_fill_pct != null ? c.allocation_fill_pct.toFixed(1) : '—';
+                const fillCol = c.allocation_fill_pct >= 95 ? 'var(--g)' :
+                    c.allocation_fill_pct >= 70 ? 'var(--a)' : 'var(--r)';
+                return `<div class="srow">
+                    <span class="sk">${c.category}</span>
+                    <span class="sv2" style="color:${fillCol}">${c.allocated_weight.toFixed(2)}w / ${(c.allocation_ratio * 100).toFixed(0)}% (<span style="color:${fillCol}">${fillPct}%</span>)</span>
+                </div>`;
+            }).join('');
+
+            const at_ideal = all.filter(i => Math.abs(i.delta_from_baseline) <= 1).length;
+            const above_ideal = all.filter(i => i.delta_from_baseline > 1).length;
+            const below_ideal = all.filter(i => i.delta_from_baseline < -1).length;
+            const dev_pos = all.filter(i => i.deviation_positive > 0).length;
+            const dev_neg = all.filter(i => i.deviation_negative > 0).length;
+            const below_min = all.filter(i => i.optimal_quantity < i.min_total).length;
+            const above_max = all.filter(i => i.optimal_quantity > i.max_total).length;
+
+            document.getElementById('summ').innerHTML = `
+    <div class="sb-blk"><h3>OPTIMIZATION META</h3>
+      <div class="srow"><span class="sk">Strategy</span><span class="sv2">${m.strategy}</span></div>
+      <div class="srow"><span class="sk">Stash</span><span class="sv2">${m.stash_capacity} lbs</span></div>
+      <div class="srow"><span class="sk">Buffer</span><span class="sv2">${m.buffer} lbs</span></div>
+      <div class="srow"><span class="sk">Usable</span><span class="sv2">${m.usable_capacity} lbs</span></div>
+      <div class="srow"><span class="sk">Used</span><span class="sv2">${m.total_weight_used.toFixed(2)} lbs</span></div>
+      <div class="srow"><span class="sk">Free</span><span class="sv2">${m.total_weight_free.toFixed(2)} lbs</span></div>
+      <div class="srow"><span class="sk">Utilization</span><span class="sv2">${m.utilization_pct}%</span></div>
+    </div>
+    <div class="sb-blk"><h3>DEVIATION ANALYSIS</h3>
+      <div class="srow"><span class="sk">Essential items</span><span class="sv2" style="color:var(--g)">${all.filter(i => i.is_essential).length}</span></div>
+      <div class="srow"><span class="sk">≈ At ideal (±1)</span><span class="sv2" style="color:var(--t0)">${at_ideal}</span></div>
+      <div class="srow"><span class="sk">Above ideal</span><span class="sv2" style="color:var(--c)">${above_ideal}</span></div>
+      <div class="srow"><span class="sk">Below ideal</span><span class="sv2" style="color:var(--a)">${below_ideal}</span></div>
+      <div class="srow"><span class="sk">d+ (above pmax)</span><span class="sv2" style="color:var(--c)">${dev_pos}</span></div>
+      <div class="srow"><span class="sk">d− (below pmin)</span><span class="sv2" style="color:var(--r)">${dev_neg}</span></div>
+      <div class="srow"><span class="sk">Below min_total</span><span class="sv2" style="color:var(--r)">${below_min}</span></div>
+      <div class="srow"><span class="sk">Above max_total ★</span><span class="sv2" style="color:var(--c)">${above_max}</span></div>
+    </div>
+    <div class="sb-blk"><h3>CATEGORY FILL</h3>${catRows}</div>
+    <div class="sb-blk"><h3>TYPE_COUNT BREAKDOWN</h3>
+      ${D.categories.map(c => {
+                const tc_total = c.items.reduce((s, i) => s + i.type_count, 0);
+                const qty_total = c.items.reduce((s, i) => s + i.optimal_quantity, 0);
+                const steal_avg = (c.items.reduce((s, i) => s + i.steal_factor, 0) / Math.max(1, c.items.length)).toFixed(2);
+                return `<div class="srow"><span class="sk">${c.category}</span><span class="sv2">tc=${tc_total} qty=${qty_total} steal̄=${steal_avg}</span></div>`;
+            }).join('')}
+    </div>`;
+        }
+    </script>
+</body>
+
+</html>

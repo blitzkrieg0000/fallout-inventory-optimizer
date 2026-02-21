@@ -1,0 +1,223 @@
+{
+  "stash_capacity": 1200,
+  "buffer": 50,
+  "categories": [
+    {
+      "category": "Junk",
+      "category_importance": 0.95,
+      "allocation_ratio": 0.4,
+      "items": [
+        {"name": "Loose screws", "type_count": 1, "unit_weight": 0.03, "weight_modifier": 1, "min_unit_quantity": 80, "max_unit_quantity": 300, "item_importance": 0.8, "is_essential": true, "steal_factor": 0.6},
+        {"name": "Loose springs", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 80, "max_unit_quantity": 300, "item_importance": 0.8, "is_essential": true, "steal_factor": 0.6},
+        {"name": "Ballistic fiber scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.7, "is_essential": true},
+        {"name": "Fiber optics bundle", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.7, "is_essential": true},
+        {"name": "Fiberglass spool", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.6, "is_essential": true},
+        {"name": "Lead scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 400, "item_importance": 0.6, "is_essential": true},
+        {"name": "Loose gears", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.6, "is_essential": true},
+        {"name": "Molded plastic", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 300, "item_importance": 0.6, "is_essential": true},
+        {"name": "Excess adhesive", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 250, "item_importance": 0.6, "is_essential": true},
+        {"name": "Circuits", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.5, "is_essential": true},
+        {"name": "Aluminum scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": true},
+        {"name": "Unrefined gunpowder", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Waste acid", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 300, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stable cobalt flux", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stable fluorescent flux", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stable violet flux", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stable crimson flux", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stable yellowcake flux", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Vault steel", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.5, "is_essential": false},
+        {"name": "Waste antiseptic", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.5, "is_essential": false},
+        {"name": "Raw asbestos", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Black titanium scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Bone shards", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Ceramic scrap", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Raw cloth", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 300, "item_importance": 0.5, "is_essential": false},
+        {"name": "Coal", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 70, "item_importance": 0.5, "is_essential": false},
+        {"name": "Concrete scrap", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": false},
+        {"name": "Copper scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.5, "is_essential": false},
+        {"name": "Cork scrap", "type_count": 1, "unit_weight": 0.03, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Crystal shards", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Raw fertilizer", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Glass shards", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 150, "item_importance": 0.5, "is_essential": false},
+        {"name": "Gold scrap", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Raw leather", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": false},
+        {"name": "Nuclear waste", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Waste oil", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": false},
+        {"name": "Raw rubber", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": false},
+        {"name": "Silver scrap", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Steel scrap", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 900, "item_importance": 0.5, "is_essential": false},
+        {"name": "Ultracite scrap", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Wood scraps", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 70, "max_unit_quantity": 500, "item_importance": 0.5, "is_essential": false}
+      ]
+    },
+    {
+      "category": "AID",
+      "category_importance": 0.9,
+      "allocation_ratio": 0.22,
+      "items": [
+        {"name": "Addictol", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.95, "is_essential": true},
+        {"name": "Buffout", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.95, "is_essential": true},
+        {"name": "High-radiation fluids", "type_count": 1, "unit_weight": 0.3, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 1.0, "is_essential": true},
+        {"name": "Med-X", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.8, "is_essential": true},
+        {"name": "Mentats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.7, "is_essential": true},
+        {"name": "RadAway", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 25, "max_unit_quantity": 80, "item_importance": 0.95, "is_essential": true},
+        {"name": "Stimpak", "type_count": 1, "unit_weight": 0.75, "weight_modifier": 1, "min_unit_quantity": 25, "max_unit_quantity": 80, "item_importance": 0.95, "is_essential": true},
+        {"name": "X-cell", "type_count": 1, "unit_weight": 0.18, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 10, "item_importance": 0.99, "is_essential": true},
+        {"name": "Antibiotics", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.8, "is_essential": false},
+        {"name": "Berry Mentats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.8, "is_essential": false},
+        {"name": "Blood pack", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.5, "is_essential": false},
+        {"name": "Bufftats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.95, "is_essential": false},
+        {"name": "Calmex", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.95, "is_essential": false},
+        {"name": "Daddy-O", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.95, "is_essential": false},
+        {"name": "Day Tripper", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.95, "is_essential": false},
+        {"name": "Disease cure", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.6, "is_essential": false},
+        {"name": "Formula P", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.5, "is_essential": false},
+        {"name": "The Fix", "type_count": 1, "unit_weight": 0.03, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.5, "is_essential": false},
+        {"name": "Fury", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.95, "is_essential": false},
+        {"name": "Glowing blood", "type_count": 1, "unit_weight": 0.3, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Glowing blood pack", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.5, "is_essential": false},
+        {"name": "Grape Mentats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.5, "is_essential": false},
+        {"name": "Healing salve", "type_count": 1, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Insect repellent", "type_count": 1, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 5, "item_importance": 0.5, "is_essential": false},
+        {"name": "Irradiated blood pack", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.5, "is_essential": false},
+        {"name": "Nuclear Don's Custom Chem Blend", "type_count": 1, "unit_weight": 0.3, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 5, "item_importance": 0.5, "is_essential": false},
+        {"name": "Orange Mentats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.5, "is_essential": false},
+        {"name": "Overdrive", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 15, "item_importance": 0.99, "is_essential": false},
+        {"name": "Psycho", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.95, "is_essential": false},
+        {"name": "Psychobuff", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 25, "item_importance": 0.95, "is_essential": false},
+        {"name": "Psychotats", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 25, "item_importance": 0.95, "is_essential": false},
+        {"name": "Rad-X", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 30, "item_importance": 0.9, "is_essential": false},
+        {"name": "Rad-X: diluted", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 30, "item_importance": 0.5, "is_essential": false},
+        {"name": "RadAway: diluted", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 40, "item_importance": 0.5, "is_essential": false},
+        {"name": "RadShield", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.7, "is_essential": false},
+        {"name": "Skeeto spit", "type_count": 1, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 5, "item_importance": 0.5, "is_essential": false},
+        {"name": "Stimpak diffuser", "type_count": 1, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 20, "item_importance": 0.6, "is_essential": false},
+        {"name": "Stimpak: diluted", "type_count": 1, "unit_weight": 0.38, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 40, "item_importance": 0.6, "is_essential": false},
+        {"name": "Stimpak: super", "type_count": 1, "unit_weight": 1.5, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 30, "item_importance": 0.7, "is_essential": false},
+        {"name": "Super chem Mk I", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 10, "item_importance": 0.6, "is_essential": false},
+        {"name": "Survival syringe", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 5, "item_importance": 0.5, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Food",
+      "category_importance": 0.5,
+      "allocation_ratio": 0.03,
+      "items": [
+        {"name": "Glowing_Mass", "type_count": 1, "unit_weight": 2.0, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 40, "item_importance": 0.9, "is_essential": true},
+        {"name": "FoodGroup_15_Types", "type_count": 15, "unit_weight": 2.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false},
+        {"name": "FoodGroup_17_Types", "type_count": 17, "unit_weight": 1.5, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false},
+        {"name": "FoodGroup_57_Types", "type_count": 57, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false},
+        {"name": "FoodGroup_45_Types", "type_count": 45, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false},
+        {"name": "FoodGroup_50_Types", "type_count": 50, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false},
+        {"name": "FoodGroup_10_Types", "type_count": 10, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Drink",
+      "category_importance": 0.5,
+      "allocation_ratio": 0.02,
+      "items": [
+        {"name": "Mountain honey", "type_count": 1, "unit_weight": 1.2, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 3, "item_importance": 0.2, "is_essential": false},
+        {"name": "Carrot flower nectar", "type_count": 1, "unit_weight": 0.7, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_35_Types", "type_count": 35, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_45_Types", "type_count": 45, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_4_Types_Light", "type_count": 4, "unit_weight": 0.25, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_4_Types_Heavy", "type_count": 4, "unit_weight": 0.75, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_2_Types", "type_count": 2, "unit_weight": 1.2, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false},
+        {"name": "DrinkGroup_3_Types", "type_count": 3, "unit_weight": 0.15, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.2, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Ammo",
+      "category_importance": 0.75,
+      "allocation_ratio": 0.08,
+      "items": [
+        {"name": "2mm electromagnetic cartridge", "type_count": 1, "unit_weight": 0.025, "weight_modifier": 1, "min_unit_quantity": 200, "max_unit_quantity": 1000, "item_importance": 0.6, "is_essential": true},
+        {"name": "5.56 round", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 600, "max_unit_quantity": 4000, "item_importance": 0.9, "is_essential": true},
+        {"name": ".308 round", "type_count": 1, "unit_weight": 0.006, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 2000, "item_importance": 0.5, "is_essential": false},
+        {"name": ".38 round", "type_count": 1, "unit_weight": 0.003, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 3000, "item_importance": 0.4, "is_essential": false},
+        {"name": ".44 round", "type_count": 1, "unit_weight": 0.004, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 2000, "item_importance": 0.5, "is_essential": false},
+        {"name": ".45 round", "type_count": 1, "unit_weight": 0.003, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 3000, "item_importance": 0.5, "is_essential": false},
+        {"name": ".50 caliber ball", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 300, "item_importance": 0.5, "is_essential": false},
+        {"name": ".50 round", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 200, "max_unit_quantity": 5000, "item_importance": 0.5, "is_essential": false},
+        {"name": "10mm round", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 2000, "item_importance": 0.4, "is_essential": false},
+        {"name": "5mm round", "type_count": 1, "unit_weight": 0.001, "weight_modifier": 1, "min_unit_quantity": 300, "max_unit_quantity": 5000, "item_importance": 0.5, "is_essential": false},
+        {"name": "Arrow", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 500, "item_importance": 0.3, "is_essential": false},
+        {"name": "Cannonball", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 50, "item_importance": 0.4, "is_essential": false},
+        {"name": "Crossbow bolt", "type_count": 1, "unit_weight": 0.06, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 300, "item_importance": 0.3, "is_essential": false},
+        {"name": "Flare", "type_count": 1, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 30, "item_importance": 0.5, "is_essential": false},
+        {"name": "Harpoon", "type_count": 1, "unit_weight": 0.2, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 100, "item_importance": 0.5, "is_essential": false},
+        {"name": "Paddle ball string", "type_count": 1, "unit_weight": 0.01, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Railway spike", "type_count": 1, "unit_weight": 0.2, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 300, "item_importance": 0.5, "is_essential": false},
+        {"name": "Shotgun shell", "type_count": 1, "unit_weight": 0.006, "weight_modifier": 1, "min_unit_quantity": 200, "max_unit_quantity": 1500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Syringer ammo", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 200, "item_importance": 0.5, "is_essential": false},
+        {"name": "Ultracite 2mm electromagnetic cartridge", "type_count": 1, "unit_weight": 0.05, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 800, "item_importance": 0.5, "is_essential": false},
+        {"name": "Alien blaster round", "type_count": 1, "unit_weight": 0.01, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Cryo cell", "type_count": 1, "unit_weight": 0.03, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 800, "item_importance": 0.5, "is_essential": false},
+        {"name": "Fuel", "type_count": 1, "unit_weight": 0.01, "weight_modifier": 1, "min_unit_quantity": 200, "max_unit_quantity": 3000, "item_importance": 0.5, "is_essential": false},
+        {"name": "Fusion cell", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 2500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Fusion core", "type_count": 1, "unit_weight": 3.0, "weight_modifier": 1, "min_unit_quantity": 2, "max_unit_quantity": 20, "item_importance": 0.5, "is_essential": false},
+        {"name": "Gamma round", "type_count": 1, "unit_weight": 0.01, "weight_modifier": 1, "min_unit_quantity": 50, "max_unit_quantity": 500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Plasma cartridge", "type_count": 1, "unit_weight": 0.03, "weight_modifier": 1, "min_unit_quantity": 100, "max_unit_quantity": 1500, "item_importance": 0.5, "is_essential": false},
+        {"name": "Plasma core", "type_count": 1, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 40, "item_importance": 0.5, "is_essential": false},
+        {"name": "40mm grenade round", "type_count": 1, "unit_weight": 0.2, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 50, "item_importance": 0.5, "is_essential": false},
+        {"name": "Mini nuke", "type_count": 1, "unit_weight": 6.0, "weight_modifier": 1, "min_unit_quantity": 5, "max_unit_quantity": 10, "item_importance": 0.3, "is_essential": false},
+        {"name": "Missile", "type_count": 1, "unit_weight": 2.0, "weight_modifier": 1, "min_unit_quantity": 10, "max_unit_quantity": 30, "item_importance": 0.4, "is_essential": false},
+        {"name": "Camera film", "type_count": 1, "unit_weight": 0.005, "weight_modifier": 1, "min_unit_quantity": 20, "max_unit_quantity": 50, "item_importance": 0.4, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Misc",
+      "category_importance": 0.5,
+      "allocation_ratio": 0.03,
+      "items": [
+        {"name": "Misc_Item", "type_count": 15, "unit_weight": 0.1, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Apparel",
+      "category_importance": 0.5,
+      "allocation_ratio": 0.04,
+      "max_capacity": 20,
+      "items": [
+        {"name": "Apparel_Item", "type_count": 15, "unit_weight": 1.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.5, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Weapon",
+      "category_importance": 0.9,
+      "allocation_ratio": 0.07,
+      "max_capacity": 50,
+      "items": [
+        {"name": "Weapon_Event", "type_count": 7, "unit_weight": 5.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.6, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Armor",
+      "category_importance": 0.9,
+      "allocation_ratio": 0.07,
+      "max_capacity": 100,
+      "items": [
+        {"name": "Armor_Event", "type_count": 7, "unit_weight": 5.0, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 1, "item_importance": 0.6, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Mods",
+      "category_importance": 0.6,
+      "allocation_ratio": 0.02,
+      "max_capacity": 15,
+      "items": [
+        {"name": "Mod_Item", "type_count": 1, "unit_weight": 0.5, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 15, "item_importance": 0.6, "is_essential": false}
+      ]
+    },
+    {
+      "category": "Notes",
+      "category_importance": 0.5,
+      "allocation_ratio": 0.02,
+      "max_capacity": 12,
+      "items": [
+        {"name": "Notes", "type_count": 1, "unit_weight": 0.01, "weight_modifier": 1, "min_unit_quantity": 1, "max_unit_quantity": 15, "item_importance": 0.5, "is_essential": false}
+      ]
+    }
+  ]
+}
